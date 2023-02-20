@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://screen_transition.gd" type="Script" id=1]
+[ext_resource path="res://silhouette.png" type="Texture" id=2]
+[ext_resource path="res://maximize_009.ogg" type="AudioStream" id=3]
+[ext_resource path="res://minimize_009.ogg" type="AudioStream" id=4]
+[ext_resource path="res://screen_transition.gdshader" type="Shader" id=5]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 5 )
+shader_param/amount = 0.0
+shader_param/image = ExtResource( 2 )
+
+[node name="ScreenTransition" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+
+[node name="AudioOut" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="AudioIn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
